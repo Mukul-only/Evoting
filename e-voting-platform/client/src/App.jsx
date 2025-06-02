@@ -30,6 +30,7 @@ import EditCandidatePage from "./pages/admin/EditCandidatePage";
 import VoterDatabasePage from "./pages/admin/VoterDatabasePage";
 import AdminAnalyticsPage from "./pages/admin/AdminAnalyticsPage";
 import AdminSettingsPlaceholderPage from "./pages/admin/AdminSettingsPlaceholderPage";
+import AdminElectionResultsPage from "./pages/admin/AdminElectionResultsPage";
 
 // Common Components
 import ProtectedRoute from "./components/common/ProtectedRoute";
@@ -89,7 +90,10 @@ function App() {
           {/* Admin Protected Routes (Accessible only by 'admin' role) */}
           <Route element={<ProtectedRoute roles={["admin"]} />}>
             <Route path="/admin" element={<AdminLayout />}>
-              {" "}
+              <Route
+                path="elections/:electionId/results"
+                element={<AdminElectionResultsPage />}
+              />{" "}
               {/* Base for all /admin/* routes */}
               <Route index element={<AdminDashboardPage />} />{" "}
               {/* Default page for /admin */}
